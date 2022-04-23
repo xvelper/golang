@@ -1,0 +1,103 @@
+{
+	"info": {
+		"_postman_id": "3a7845f8-fa60-4252-afb3-6cb23595f94c",
+		"name": "notice",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "notes",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{server}}/notes",
+					"host": [
+						"{{server}}"
+					],
+					"path": [
+						"notes"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "note/add",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\": \"Заголовок заметки\",\r\n    \"info\": \"Описание заметки\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{server}}/api/note/add",
+					"host": [
+						"{{server}}"
+					],
+					"path": [
+						"api",
+						"note",
+						"add"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "note/:id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{server}}/api/note/2",
+					"host": [
+						"{{server}}"
+					],
+					"path": [
+						"api",
+						"note",
+						"2"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "88c8e6c4-e3e6-4384-a0a0-1b06cbcb56de",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "f15e6f2d-7081-40e0-83dc-ce96e8b508a3",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "b81aeb24-55db-467a-8db0-0f5f7f973327",
+			"key": "server",
+			"value": "localhost:9090"
+		}
+	],
+	"protocolProfileBehavior": {}
+}
