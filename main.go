@@ -2,7 +2,9 @@ package main
 
 import (
 	"net/http"
+
 	controller "notice/controllers"
+	service "notice/services"
 
 	"github.com/gin-gonic/gin"
 )
@@ -23,6 +25,8 @@ func main() {
 		c.HTML(http.StatusOK, "index.html", gin.H{})
 	})
 
+	r.Use(service.CORS())
+
 	r.GET("/api", Api)
 
 	rApi := r.Group("/api")
@@ -37,5 +41,5 @@ func main() {
 		}
 	}
 
-	r.Run("localhost:9080")
+	r.Run("0.0.0.0:9090")
 }

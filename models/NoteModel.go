@@ -1,7 +1,7 @@
 package model
 
 import (
-	service "notice/services"
+	"notice/services"
 )
 
 type Note struct {
@@ -70,9 +70,8 @@ func UpdateNote(note Note) Note {
 
 func DeleteNote(id int64) error {
 	db := service.PgDataBase()
-	var note Note
 
-	_, err := db.Model(&note).Where("id = ?", id).Delete()
+	_, err := db.Model().Where("id = ?", id).Delete()
 
 	db.Close()
 	return err
