@@ -4,7 +4,7 @@ import (
 	"net/http"
 	"strconv"
 
-	"notice/models"
+	model "notice/models"
 
 	"github.com/gin-gonic/gin"
 )

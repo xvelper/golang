@@ -34,6 +34,32 @@ function App() {
     });
   }
 
+  const delNote = (id) => {
+    axios.delete(
+      `http://localhost:9090/api/note/${id}`,
+      {
+        withCredentials: false,
+      }
+    ).then(() => {
+      setIsUpdate(!isUpdate);
+    });
+  }
+
+  const editNote = () => {
+    axios.put(
+      `http://localhost/api/note/edit`,
+      {
+        title: inputTitle.current.value,
+        info: inputInfo.current.value,
+      },
+      {
+        withCredentials: false,
+      }
+    ).then(() => {
+      setIsUpdate(!isUpdate);
+    });
+  }
+
   return (
     <div className="App">
 
@@ -45,8 +71,12 @@ function App() {
         Добавить
       </button>
       {!!notes && notes.map((note, index) => (
-        <div key={'note_' + index}>{note.title}</div>
+        <div key={'note_' + index}>{note.title}
+          <button onClick={() => delNote(note.id)}>Удалить запись</button>
+          <button onClick={() => editNote()}>Изменить</button>
+        </div>
       ))}
+      
 
     </div>
   );
