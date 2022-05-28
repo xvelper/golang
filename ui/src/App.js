@@ -45,10 +45,12 @@ function App() {
     });
   }
 
-  const editNote = () => {
+  const editNote = (note) => {
     axios.put(
-      `http://localhost/api/note/edit`,
+      `http://localhost:9090/api/note/edit`,
       {
+        id: note.id,
+        created_at: note.created_at,
         title: inputTitle.current.value,
         info: inputInfo.current.value,
       },
@@ -73,11 +75,9 @@ function App() {
       {!!notes && notes.map((note, index) => (
         <div key={'note_' + index}>{note.title}
           <button onClick={() => delNote(note.id)}>Удалить запись</button>
-          <button onClick={() => editNote()}>Изменить</button>
+          <button onClick={() => editNote(note)}>Изменить</button>
         </div>
       ))}
-      
-
     </div>
   );
 }
